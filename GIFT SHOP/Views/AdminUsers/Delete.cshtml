@@ -1,0 +1,81 @@
+﻿@model GIFT_SHOP.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.U_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.U_add)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.U_add)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index")
+        </div>
+    }
+</div>

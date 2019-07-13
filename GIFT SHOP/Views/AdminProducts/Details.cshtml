@@ -1,0 +1,99 @@
+﻿@model GIFT_SHOP.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.P_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_colur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_colur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_texture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_texture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_chest_waistline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_chest_waistline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Ca_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Ca_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("แก้ไข", "Edit", new { id = Model.P_ID }) |
+    @Html.ActionLink("ย้อนกลับ", "Index")
+</p>

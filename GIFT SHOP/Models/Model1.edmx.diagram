@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="43c7855ed96f4b25ad72bd88fc95478c" Name="Diagram1">
+        <EntityTypeShape EntityType="Database1Model.Category" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Delivery" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Product" Width="1.5" PointX="5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Sale" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.SaleDetail" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Stau" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.FK_Product_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Sale_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Sale_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_Sale_ToTable_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

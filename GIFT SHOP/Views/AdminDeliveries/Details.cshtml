@@ -1,0 +1,27 @@
+﻿@model GIFT_SHOP.Models.Delivery
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Delivery</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivery_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivery_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("แก้ไข", "Edit", new { id = Model.Delivery_ID }) |
+    @Html.ActionLink("ย้อนกลับ", "Index")
+</p>

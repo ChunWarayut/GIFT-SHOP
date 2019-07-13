@@ -1,0 +1,89 @@
+﻿@model GIFT_SHOP.Models.Sale
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.S_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_add)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_add)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_sum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_sum)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_slip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_slip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.S_packagenumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.S_packagenumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivery.Delivery_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivery.Delivery_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.U_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.U_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stau.Staus_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stau.Staus_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index")
+        </div>
+    }
+</div>

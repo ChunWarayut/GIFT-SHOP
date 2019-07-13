@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <section class=" is-Light is-fullheight">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+            <nav class="navbar shadow rounded">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <div class="navbar-item">
+                            <img src="~/img/logo.png" />
+                        </div>
+                        <span class="navbar-burger burger" data-target="navbarMenuHeroA">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenuHeroA" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item is-active">
+                                หน้าแรก
+                            </a>
+                            <a class="navbar-item">
+                                เสื้อ
+                            </a>
+                            <a class="navbar-item">
+                                กางเกง
+                            </a>
+                            <a class="navbar-item">
+                                ติดตามสถานะสินค้า
+                            </a>
+                            <a class="navbar-item">
+                                ตะกร้า
+                            </a>
+                            <a class="navbar-item">
+                                ลงทะเบียน
+                            </a>
+                            <a class="navbar-item">
+                                เข้าสู่ระบบ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+
+    </section>
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<GIFT_SHOP.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("เพิ่มข้อมูล", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.P_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_colur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_texture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_chest_waistline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.P_amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.Ca_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_colur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_size)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_texture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_chest_waistline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.P_amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.Ca_name)
+        </td>
+        <td>
+            @Html.ActionLink("แก้ไข", "Edit", new { id=item.P_ID }) |
+            @Html.ActionLink("ลบ", "Delete", new { id=item.P_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<GIFT_SHOP.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.U_username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_tel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.U_add)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_tel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.U_add)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.U_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.U_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.U_ID })
+        </td>
+    </tr>
+}
+
+</table>

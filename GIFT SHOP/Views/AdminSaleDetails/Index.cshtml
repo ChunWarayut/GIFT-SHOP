@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GIFT_SHOP.Models.SaleDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div id="navbarMenuHeroA" class="navbar-menu">
+    <div class="navbar-end">
+        <a class="navbar-item is-active" href="/AdminDeliveries">
+            จัดการข้อมูลประเภทการส่งสินค้า
+        </a>
+        <a class="navbar-item is-active" href="/AdminStaus">
+            จัดการสถานะการชำระเงิน
+        </a>
+    </div>
+</div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.P_ID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sd_number)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pro_Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sale.S_add)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.U_username)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.P_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sd_number)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pro_Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sale.S_add)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.U_username)
+                    </td>
+                    <td>
+                        @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
+                        @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
+                    </td>
+                </tr>
+            }
+
+        </table>

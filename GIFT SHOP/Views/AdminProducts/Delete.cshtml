@@ -1,0 +1,105 @@
+﻿@model GIFT_SHOP.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.P_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_colur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_colur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_texture)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_texture)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_chest_waistline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_chest_waistline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.P_amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Ca_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Ca_name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("ย้อนกลับ", "Index")
+        </div>
+    }
+</div>

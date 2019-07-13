@@ -1,0 +1,33 @@
+﻿@model IEnumerable<GIFT_SHOP.Models.Stau>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ระบบจัดการสถานะการชำระเงิน</h2>
+
+<p>
+    @Html.ActionLink("เพิ่มข้อมูล", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Staus_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Staus_name)
+        </td>
+        <td>
+            @Html.ActionLink("แก้ไข", "Edit", new { id=item.Staus_ID }) |
+            @Html.ActionLink("ลบ", "Delete", new { id=item.Staus_ID })
+        </td>
+    </tr>
+}
+
+</table>
