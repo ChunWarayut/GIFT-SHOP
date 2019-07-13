@@ -31,7 +31,7 @@
           <Property Name="P_colur" Type="nvarchar" MaxLength="10" />
           <Property Name="P_size" Type="nvarchar" MaxLength="10" />
           <Property Name="P_texture" Type="nvarchar" MaxLength="10" />
-          <Property Name="P_length" Type="varchar" MaxLength="2" />
+          <Property Name="P_length" Type="nvarchar" MaxLength="20" />
           <Property Name="P_chest_waistline" Type="varchar" MaxLength="2" />
           <Property Name="P_amount" Type="int" Nullable="false" />
         </EntityType>
@@ -217,8 +217,8 @@
           <Property Name="P_colur" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="P_size" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="P_texture" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="P_length" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <Property Name="P_chest_waistline" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="P_length" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="P_chest_waistline" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="P_amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_ToTable" FromRole="Product" ToRole="Category" />
         </EntityType>
