@@ -5,9 +5,9 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+
+<h3>ยืนยันการลบข้อมูล</h3>
 <div>
     <h4>ระบบจัดการสถานะการชำระเงิน</h4>
     <hr />
@@ -26,7 +26,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="ลบข้อมูล" class="btn btn-default" /> |
             @Html.ActionLink("ย้อนกลับ", "Index")
         </div>
     }

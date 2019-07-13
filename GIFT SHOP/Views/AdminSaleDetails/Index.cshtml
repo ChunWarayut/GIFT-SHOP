@@ -29,7 +29,7 @@
                     @Html.DisplayNameFor(model => model.Sale.S_add)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.User.U_username)
+                    @Html.DisplayNameFor(model => model.User.U_name)
                 </th>
                 <th></th>
             </tr>
@@ -50,7 +50,7 @@
                         @Html.DisplayFor(modelItem => item.Sale.S_add)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.User.U_username)
+                        @Html.DisplayFor(modelItem => item.User.U_name) &nbsp; @Html.DisplayFor(modelItem => item.User.U_lastname)
                     </td>
                     <td>
                         @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
