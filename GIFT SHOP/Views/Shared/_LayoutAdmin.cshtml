@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @{
+        if (Session["User_Id"] == null)
+        {
+            Response.Redirect("~/AdminLogin/Index");
+        }
+    }
 </head>
 <body>
     <section class=" is-Light is-fullheight">
@@ -43,7 +49,7 @@
                             <a class="navbar-item" href="/Report">
                                 รายงาน
                             </a>
-                            <a class="navbar-item">
+                            <a class="navbar-item"href="/AdminLogin/Logout">
                                 ออกจากระบบ
                             </a>
                         </div>
