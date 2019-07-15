@@ -13,34 +13,34 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.P_name)
+            <center>@Html.DisplayNameFor(model => model.P_name)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_img)
+            <center>@Html.DisplayNameFor(model => model.P_img)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_price)
+            <center>@Html.DisplayNameFor(model => model.P_price)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_colur)
+            <center>@Html.DisplayNameFor(model => model.P_colur)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_size)
+            <center>@Html.DisplayNameFor(model => model.P_size)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_texture)
+            <center>@Html.DisplayNameFor(model => model.P_texture)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_length)
+            <center>@Html.DisplayNameFor(model => model.P_length)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_chest_waistline)
+            <center>@Html.DisplayNameFor(model => model.P_chest_waistline)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.P_amount)
+            <center>@Html.DisplayNameFor(model => model.P_amount)</center>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Category.Ca_name)
+            <center> @Html.DisplayNameFor(model => model.Category.Ca_name)</center>
         </th>
         <th></th>
     </tr>
@@ -51,30 +51,35 @@
             @Html.DisplayFor(modelItem => item.P_name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.P_img)
+            <center>
+                <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)"
+                     alt="img"
+                     style="height : 30px; width : auto;"
+                     asp-append-version="true" />
+            </center>
         </td>
-        <td>
+        <td align="right">
             @Html.DisplayFor(modelItem => item.P_price)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.P_colur)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.P_size)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.P_texture)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.P_length)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.P_chest_waistline)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.P_amount)
         </td>
-        <td>
+        <td align="center">
             @Html.DisplayFor(modelItem => item.Category.Ca_name)
         </td>
         <td>

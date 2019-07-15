@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GIFT_SHOP.Models;
+using System.IO;
 
 namespace GIFT_SHOP.Controllers
 {
@@ -49,13 +50,23 @@ namespace GIFT_SHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "P_ID,P_name,Ca_ID,P_img,P_price,P_colur,P_size,P_texture,P_length,P_chest_waistline,P_amount")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "P_ID,P_name,Ca_ID,P_img,P_price,P_colur,P_size,P_texture,P_length,P_chest_waistline,P_amount")] Product product, HttpPostedFileBase P_img)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (P_img.ContentLength > 0)
+                {
+
+                    string FileName = Path.GetFileName(P_img.FileName);
+                    string FolderPath = Path.Combine(Server.MapPath("~/img/products"), FileName);
+                    P_img.SaveAs(FolderPath);
+                    product.P_img = FileName;
+
+                    db.Products.Add(product);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+
+                }
             }
 
             ViewBag.Ca_ID = new SelectList(db.Categories, "Ca_ID", "Ca_name", product.Ca_ID);
@@ -83,13 +94,23 @@ namespace GIFT_SHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "P_ID,P_name,Ca_ID,P_img,P_price,P_colur,P_size,P_texture,P_length,P_chest_waistline,P_amount")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "P_ID,P_name,Ca_ID,P_img,P_price,P_colur,P_size,P_texture,P_length,P_chest_waistline,P_amount")] Product product, HttpPostedFileBase P_img)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (P_img.ContentLength > 0)
+                {
+
+                    string FileName = Path.GetFileName(P_img.FileName);
+                    string FolderPath = Path.Combine(Server.MapPath("~/img/products"), FileName);
+                    P_img.SaveAs(FolderPath);
+                    product.P_img = FileName;
+
+                    db.Entry(product).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+
+                }
             }
             ViewBag.Ca_ID = new SelectList(db.Categories, "Ca_ID", "Ca_name", product.Ca_ID);
             return View(product);
