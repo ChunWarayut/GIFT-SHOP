@@ -37,4 +37,10 @@ textarea {
     margin-top: -25px !important;
 }
 
+.footer-admin {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
 }
+

@@ -10,8 +10,8 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover table-bordered">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.U_username)
         </th>
@@ -60,9 +60,11 @@
             @Html.DisplayFor(modelItem => item.U_add)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.U_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.U_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.U_ID })
+            <center>
+                @Html.ActionLink("Edit", "Edit", new { id = item.U_ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.U_ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.U_ID })
+            </center>
         </td>
     </tr>
 }

@@ -8,6 +8,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
+    <link href="~/Content/Site.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
     @{
         if (Session["User_Id"] == null)
@@ -66,7 +67,7 @@
         </div>
 
     </section>
-    <footer class="footer">
+    <footer class="footer footer-admin">
         <div class="content has-text-centered">
             <p>
                 <strong class="copy-right">

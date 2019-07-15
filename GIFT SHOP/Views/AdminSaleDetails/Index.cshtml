@@ -14,8 +14,8 @@
         </a>
     </div>
 </div>
-        <table class="table">
-            <tr>
+        <table class="table table-hover table-bordered">
+            <tr class="thead-light">
                 <th>
                     @Html.DisplayNameFor(model => model.P_ID)
                 </th>
@@ -53,8 +53,10 @@
                         @Html.DisplayFor(modelItem => item.User.U_name) &nbsp; @Html.DisplayFor(modelItem => item.User.U_lastname)
                     </td>
                     <td>
-                        @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
-                        @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
+                        <center>
+                            @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
+                            @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
+                        </center>
                     </td>
                 </tr>
             }

@@ -10,8 +10,8 @@
 <p>
     @Html.ActionLink("เพิ่มข้อมูล", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover table-bordered">
+    <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.Delivery_name)
         </th>
@@ -24,8 +24,10 @@
             @Html.DisplayFor(modelItem => item.Delivery_name)
         </td>
         <td>
-            @Html.ActionLink("แก้ไข", "Edit", new { id=item.Delivery_ID }) |
-            @Html.ActionLink("ลบ", "Delete", new { id=item.Delivery_ID })
+            <center>
+                @Html.ActionLink("แก้ไข", "Edit", new { id = item.Delivery_ID }) |
+                @Html.ActionLink("ลบ", "Delete", new { id = item.Delivery_ID })
+            </center>
         </td>
     </tr>
 }
