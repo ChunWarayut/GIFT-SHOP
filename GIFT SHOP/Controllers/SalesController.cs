@@ -51,7 +51,7 @@ namespace GIFT_SHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "S_ID,S_date,U_ID,S_add,D_ID,S_sum,P_size,S_slip,Staus_ID,S_packagenumber")] Sale sale)
+        public async Task<ActionResult> Create([Bind(Include = "S_ID,S_date,U_ID,S_add,D_ID,S_sum,S_slip,Staus_ID,S_packagenumber")] Sale sale)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace GIFT_SHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "S_ID,S_date,U_ID,S_add,D_ID,S_sum,P_size,S_slip,Staus_ID,S_packagenumber")] Sale sale)
+        public async Task<ActionResult> Edit([Bind(Include = "S_ID,S_date,U_ID,S_add,D_ID,S_sum,S_slip,Staus_ID,S_packagenumber")] Sale sale)
         {
             if (ModelState.IsValid)
             {

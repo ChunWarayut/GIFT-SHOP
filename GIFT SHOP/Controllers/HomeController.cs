@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GIFT_SHOP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace GIFT_SHOP.Controllers
 {
     public class HomeController : Controller
     {
+        private Database1Entities db = new Database1Entities();
         public ActionResult Index()
         {
-            return View();
+            var products = db.Products.ToList();
+            return View(products);
         }
 
         public ActionResult About()

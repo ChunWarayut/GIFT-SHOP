@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GIFT_SHOP.Models.Sale>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.S_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_add)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_sum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_slip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.S_packagenumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delivery.Delivery_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.U_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stau.Staus_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_add)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_sum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_slip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.S_packagenumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delivery.Delivery_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.U_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stau.Staus_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.S_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.S_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.S_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -151,10 +151,3 @@ html, body {
     transition: 0.2s ease-in-out;
 }
 
-
-.footer-admin {
-    position: absolute;
-    bottom: 0;
-    text-align: center;
-    width: 100%;
-}
