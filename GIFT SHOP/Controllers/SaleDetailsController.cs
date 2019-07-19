@@ -38,11 +38,23 @@ namespace GIFT_SHOP.Controllers
         }
 
         // GET: SaleDetails/Create
-        public ActionResult Create()
+        public ActionResult Create(decimal? price, int? id)
         {
+            ViewBag.Price = price;
+            ViewBag.Pro_Id = id;
             ViewBag.Sale_ID = new SelectList(db.Sales, "S_ID", "S_add");
             ViewBag.U_ID = new SelectList(db.Users, "U_ID", "U_username");
-            return View();
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
         }
 
         // POST: SaleDetails/Create
@@ -50,17 +62,20 @@ namespace GIFT_SHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "S_ID,P_ID,Sd_number,Sale_ID,Pro_Price,U_ID")] SaleDetail saleDetail)
+        public async Task<ActionResult> Create([Bind(Include = "S_ID,P_ID,Sd_number,Sale_ID,Pro_Price,U_ID")] SaleDetail saleDetail, decimal Sd_number, decimal Price)
         {
             if (ModelState.IsValid)
             {
+                saleDetail.Pro_Price = Convert.ToInt32(Price * Sd_number);
+                saleDetail.Sale_ID = 1;
+                saleDetail.U_ID = 1;
                 db.SaleDetails.Add(saleDetail);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Sale_ID = new SelectList(db.Sales, "S_ID", "S_add", saleDetail.Sale_ID);
-            ViewBag.U_ID = new SelectList(db.Users, "U_ID", "U_username", saleDetail.U_ID);
+            //ViewBag.Sale_ID = new SelectList(db.Sales, "S_ID", "S_add", saleDetail.Sale_ID);
+            //ViewBag.U_ID = new SelectList(db.Users, "U_ID", "U_username", saleDetail.U_ID);
             return View(saleDetail);
         }
 

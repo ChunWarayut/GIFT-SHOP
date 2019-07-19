@@ -31,8 +31,8 @@
           <Property Name="P_colur" Type="nvarchar" MaxLength="10" />
           <Property Name="P_size" Type="nvarchar" MaxLength="10" />
           <Property Name="P_texture" Type="nvarchar" MaxLength="10" />
-          <Property Name="P_length" Type="nvarchar" MaxLength="20" />
-          <Property Name="P_chest_waistline" Type="varchar" MaxLength="2" />
+          <Property Name="P_length" Type="nvarchar" MaxLength="2" />
+          <Property Name="P_chest_waistline" Type="nvarchar" MaxLength="20" />
           <Property Name="P_amount" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sale">
@@ -152,6 +152,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SaleDetail_ToTable_2">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="SaleDetail" Type="Self.SaleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="SaleDetail">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Database1ModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
@@ -182,6 +194,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_SaleDetail_ToTable_1" Association="Self.FK_SaleDetail_ToTable_1">
             <End Role="User" EntitySet="User" />
+            <End Role="SaleDetail" EntitySet="SaleDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleDetail_ToTable_2" Association="Self.FK_SaleDetail_ToTable_2">
+            <End Role="Product" EntitySet="Product" />
             <End Role="SaleDetail" EntitySet="SaleDetail" />
           </AssociationSet>
         </EntityContainer>
@@ -218,9 +234,10 @@
           <Property Name="P_size" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="P_texture" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="P_length" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
-          <Property Name="P_chest_waistline" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="P_chest_waistline" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="P_amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_ToTable" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="SaleDetails" Relationship="Database1Model.FK_SaleDetail_ToTable_2" FromRole="Product" ToRole="SaleDetail" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -252,6 +269,7 @@
           <Property Name="U_ID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Sale" Relationship="Self.FK_SaleDetail_ToTable" FromRole="SaleDetail" ToRole="Sale" />
           <NavigationProperty Name="User" Relationship="Self.FK_SaleDetail_ToTable_1" FromRole="SaleDetail" ToRole="User" />
+          <NavigationProperty Name="Product" Relationship="Database1Model.FK_SaleDetail_ToTable_2" FromRole="SaleDetail" ToRole="Product" />
         </EntityType>
         <EntityType Name="Stau">
           <Key>
@@ -380,7 +398,23 @@
             <End Role="User" EntitySet="Users" />
             <End Role="SaleDetail" EntitySet="SaleDetails" />
           </AssociationSet>
+          <AssociationSet Name="FK_SaleDetail_ToTable_2" Association="Database1Model.FK_SaleDetail_ToTable_2">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="SaleDetail" EntitySet="SaleDetails" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_SaleDetail_ToTable_2">
+          <End Type="Database1Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Database1Model.SaleDetail" Role="SaleDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="SaleDetail">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

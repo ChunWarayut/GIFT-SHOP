@@ -30,5 +30,6 @@ namespace GIFT_SHOP.Models
     
         public virtual Sale Sale { get; set; }
         public virtual User User { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

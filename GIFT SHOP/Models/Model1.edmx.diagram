@@ -18,6 +18,7 @@
         <AssociationConnector Association="Database1Model.FK_Sale_ToTable_2" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable_1" ManuallyRouted="false" />
+        <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable_2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

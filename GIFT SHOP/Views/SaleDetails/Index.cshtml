@@ -1,0 +1,69 @@
+﻿@model IEnumerable<GIFT_SHOP.Models.SaleDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<hr />
+<center>
+    <h2>ตะกร้าสินค้า</h2>
+</center>
+
+<table class="table table-hover table-bordered">
+    <tr class="thead-light">
+        <th>
+            @Html.DisplayNameFor(model => model.Product.P_name)
+        </th>
+        <th>
+            <center>@Html.DisplayNameFor(model => model.Product.P_img)</center>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sd_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pro_Price)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Sale.S_add)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.User.U_username)
+        </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Product.P_name)
+    </td>
+    <td>
+        <center>
+            <img src="~/img/products/@Html.DisplayFor(modelItem => item.Product.P_img)"
+                 alt="img"
+                 style="height : 30px; width : auto;"
+                 asp-append-version="true" />
+        </center>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Sd_number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Price)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.Sale.S_add)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.U_username)
+        </td>*@
+    <td>
+        @*@Html.ActionLink("Edit", "Edit", new { id = item.S_ID }) |*@
+        @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
+    </td>
+</tr>
+    }
+
+</table>

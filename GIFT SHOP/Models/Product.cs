@@ -39,5 +39,7 @@ namespace GIFT_SHOP.Models
         public int P_amount { get; set; }
     
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleDetail> SaleDetails { get; set; }
     }
 }

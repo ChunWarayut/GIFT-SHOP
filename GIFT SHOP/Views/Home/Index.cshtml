@@ -36,40 +36,42 @@
         @foreach (var item in Model)
         {
             <div class="col-lg-4 is-variable is-8">
-                <div class="card">
-                    <div class="card-image">
-                        <figure class="image is-4by3">
-                            <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)" alt="Placeholder image">
-                        </figure>
-                    </div>
-                    <div class="card-content">
-                        <div class="media">
-                            <div class="media-left">
-                                <figure class="image is-48x48">
-                                    <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)" alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="media-content">
-                                <p class="title is-4">@Html.DisplayFor(modelItem => item.P_name)</p>
-                                <p class="subtitle is-6">@Html.DisplayFor(modelItem => item.Category.Ca_name)</p>
-                            </div>
+                <a href="/SaleDetails/Create?price=@item.P_price&id=@item.P_ID">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)" alt="Placeholder image">
+                            </figure>
                         </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="media-content">
+                                    <p class="title is-4">@Html.DisplayFor(modelItem => item.P_name)</p>
+                                    <p class="subtitle is-6">@Html.DisplayFor(modelItem => item.Category.Ca_name)</p>
+                                </div>
+                            </div>
 
-                        <div class="content">
-                            สี @Html.DisplayFor(modelItem => item.P_colur)
-                            ไซต์ @Html.DisplayFor(modelItem => item.P_size)
-                            เนื้อผ้า @Html.DisplayFor(modelItem => item.P_texture)
-                            <br />
-                            ยาว @Html.DisplayFor(modelItem => item.P_length)
-                            รอบอก/รอบเอว @Html.DisplayFor(modelItem => item.P_chest_waistline)
-                            <br />
-                            จำนวนสินค้าคงเหลือ @Html.DisplayFor(modelItem => item.P_amount) ชิ้น
-                            <br />
-                            ราคา @Html.DisplayFor(modelItem => item.P_price) บาท
-                            <br />
+                            <div class="content">
+                                @*สี @Html.DisplayFor(modelItem => item.P_colur)
+                    ไซต์ @Html.DisplayFor(modelItem => item.P_size)
+                    เนื้อผ้า @Html.DisplayFor(modelItem => item.P_texture)
+                    <br />
+                    ยาว @Html.DisplayFor(modelItem => item.P_length)
+                    รอบอก/รอบเอว @Html.DisplayFor(modelItem => item.P_chest_waistline)
+                    <br />
+                    จำนวนสินค้าคงเหลือ @Html.DisplayFor(modelItem => item.P_amount) ชิ้น
+                    <br />*@
+                                ราคา @Html.DisplayFor(modelItem => item.P_price) บาท
+                                <br />
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         }
     </div>

@@ -1,0 +1,59 @@
+﻿@model GIFT_SHOP.Models.SaleDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SaleDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.P_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.P_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sd_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sd_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pro_Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pro_Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sale.S_add)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sale.S_add)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.U_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.U_username)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.S_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
