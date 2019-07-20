@@ -17,7 +17,7 @@
         <table class="table table-hover table-bordered">
             <tr class="thead-light">
                 <th>
-                    @Html.DisplayNameFor(model => model.P_ID)
+                    @Html.DisplayNameFor(model => model.Product.P_name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Sd_number)
@@ -31,14 +31,14 @@
                 <th>
                     @Html.DisplayNameFor(model => model.User.U_name)
                 </th>
-                <th></th>
+                @*<th></th>*@
             </tr>
 
             @foreach (var item in Model)
             {
                 <tr>
                     <td>
-                        @Html.DisplayFor(modelItem => item.P_ID)
+                        @Html.DisplayFor(modelItem => item.Product.P_name)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Sd_number)
@@ -52,12 +52,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.User.U_name) &nbsp; @Html.DisplayFor(modelItem => item.User.U_lastname)
                     </td>
-                    <td>
+                    @*<td>
                         <center>
                             @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
                             @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
                         </center>
-                    </td>
+                    </td>*@
                 </tr>
             }
 

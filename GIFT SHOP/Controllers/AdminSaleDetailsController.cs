@@ -22,21 +22,6 @@ namespace GIFT_SHOP.Controllers
             return View(await saleDetails.ToListAsync());
         }
 
-        // GET: AdminSaleDetails/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SaleDetail saleDetail = await db.SaleDetails.FindAsync(id);
-            if (saleDetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(saleDetail);
-        }
-
         // GET: AdminSaleDetails/Create
         public ActionResult Create()
         {

@@ -8,10 +8,10 @@
 
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(Html.BeginForm("Create", "AdminSales", FormMethod.Post, new { enctype = "multipart/form-data" })))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Sale</h4>
         <hr />
@@ -59,7 +59,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.S_slip, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.S_slip, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.S_slip, new { type = "file" })
                 @Html.ValidationMessageFor(model => model.S_slip, "", new { @class = "text-danger" })
             </div>
         </div>

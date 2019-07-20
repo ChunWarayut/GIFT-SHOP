@@ -18,23 +18,21 @@ namespace GIFT_SHOP.Controllers
         // GET: SaleDetails
         public async Task<ActionResult> Index()
         {
-            var saleDetails = db.SaleDetails.Include(s => s.Sale).Include(s => s.User);
-            return View(await saleDetails.ToListAsync());
-        }
+            var uid = Convert.ToInt32(Session["User_ID"]);
+            var pro_0 = db.SaleDetails.Where(x => x.Sale_ID == 1 && x.U_ID == uid).ToList();
+            if (pro_0.Count() > 0)
+            {
+                ViewBag.Prosum = db.SaleDetails.Where(x => x.Sale_ID == 1 && x.U_ID == uid).Select(x => x.Pro_Price).Sum();
+            }
+            else
+            {
+                ViewBag.Prosum = 0;
+            }
+            var orderDetails = db.SaleDetails.OrderBy(x => x.Sale_ID).Include(o => o.Product);
+            return View(await orderDetails.Where(x => x.Sale_ID == 1 && x.U_ID == uid).ToListAsync());
 
-        // GET: SaleDetails/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SaleDetail saleDetail = await db.SaleDetails.FindAsync(id);
-            if (saleDetail == null)
-            {
-                return HttpNotFound();
-            }
-            return View(saleDetail);
+            //var saleDetails = db.SaleDetails.Include(s => s.Sale).Include(s => s.User);
+            //return View(await saleDetails.ToListAsync());
         }
 
         // GET: SaleDetails/Create
@@ -66,9 +64,15 @@ namespace GIFT_SHOP.Controllers
         {
             if (ModelState.IsValid)
             {
+                var uid = Convert.ToInt32(Session["User_ID"]);
                 saleDetail.Pro_Price = Convert.ToInt32(Price * Sd_number);
                 saleDetail.Sale_ID = 1;
-                saleDetail.U_ID = 1;
+                saleDetail.U_ID = uid;
+                var update = db.Products.Where(o => o.P_ID == saleDetail.P_ID).FirstOrDefault();
+                if (update != null)
+                {
+                    update.P_amount = Convert.ToInt32(update.P_amount - Sd_number);
+                }
                 db.SaleDetails.Add(saleDetail);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -135,6 +139,11 @@ namespace GIFT_SHOP.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             SaleDetail saleDetail = await db.SaleDetails.FindAsync(id);
+            var update = db.Products.Where(o => o.P_ID == saleDetail.P_ID).FirstOrDefault();
+            if (update != null)
+            {
+                update.P_amount = Convert.ToInt32(update.P_amount + saleDetail.Sd_number);
+            }
             db.SaleDetails.Remove(saleDetail);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

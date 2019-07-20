@@ -21,21 +21,6 @@ namespace GIFT_SHOP.Controllers
             return View(await db.Staus.ToListAsync());
         }
 
-        // GET: AdminStaus/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Stau stau = await db.Staus.FindAsync(id);
-            if (stau == null)
-            {
-                return HttpNotFound();
-            }
-            return View(stau);
-        }
-
         // GET: AdminStaus/Create
         public ActionResult Create()
         {

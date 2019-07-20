@@ -12,6 +12,7 @@ namespace GIFT_SHOP.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Sale
     {
@@ -23,6 +24,7 @@ namespace GIFT_SHOP.Models
 
         [DisplayName("เลขที่ใบสั่งซื้อ")]
         public int S_ID { get; set; }
+        [DataType(DataType.Date)]
         [DisplayName("วันที่สั่งซื้อ")]
         public System.DateTime S_date { get; set; }
         [DisplayName("ชื่อลูกค้า")]

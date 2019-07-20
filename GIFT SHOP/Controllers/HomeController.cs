@@ -12,6 +12,7 @@ namespace GIFT_SHOP.Controllers
         private Database1Entities db = new Database1Entities();
         public ActionResult Index()
         {
+            Session["User_ID"] = 1;
             var products = db.Products.ToList();
             return View(products);
         }

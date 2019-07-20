@@ -5,19 +5,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>SaleDetail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.P_ID)
+            @Html.DisplayNameFor(model => model.Product.P_name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.P_ID)
+            @Html.DisplayFor(model => model.Product.P_name)
         </dd>
 
         <dt>
@@ -44,13 +40,6 @@
             @Html.DisplayFor(model => model.Sale.S_add)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.User.U_username)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.User.U_username)
-        </dd>
 
     </dl>
 
@@ -58,8 +47,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="ลบ" class="btn btn-default" /> |
+            @Html.ActionLink("ยกเลิก", "Index")
         </div>
     }
 </div>

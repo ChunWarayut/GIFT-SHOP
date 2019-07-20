@@ -5,11 +5,17 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<div id="navbarMenuHeroA" class="navbar-menu">
+    <div class="navbar-end">
+        <a class="navbar-item is-active" href="/AdminDeliveries">
+            จัดการข้อมูลประเภทการส่งสินค้า
+        </a>
+        <a class="navbar-item is-active" href="/AdminStaus">
+            จัดการสถานะการชำระเงิน
+        </a>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("เพิ่มข้อมูล", "Create")
-</p>
 <table class="table table-hover table-bordered">
     <tr class="thead-light">
         <th>
@@ -31,7 +37,7 @@
             @Html.DisplayNameFor(model => model.Delivery.Delivery_name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.U_username)
+            @Html.DisplayNameFor(model => model.User.U_name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Stau.Staus_name)
@@ -39,39 +45,48 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_add)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_sum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_slip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_packagenumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delivery.Delivery_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.U_username)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stau.Staus_name)
-        </td>
-        <td>
-            <center>
-                @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
-                @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
-            </center>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.S_date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.S_add)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.S_sum)
+    </td>
+    <td>
+        <center>
+            <img src="~/img/slips/@Html.DisplayFor(modelItem => item.S_slip)"
+                 alt="img"
+                 style="height : 30px; width : auto;"
+                 asp-append-version="true" />
+        </center>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.S_packagenumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Delivery.Delivery_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.User.U_name) &nbsp; @Html.DisplayFor(modelItem => item.User.U_lastname)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Stau.Staus_name)
+    </td>
+    <td>
+        <center>
+            @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
+            <a class="" href="/AdminSaleDetails">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a> |
+            @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
+        </center>
+    </td>
+</tr>
+    }
 
 </table>

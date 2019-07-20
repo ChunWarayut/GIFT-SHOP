@@ -21,21 +21,6 @@ namespace GIFT_SHOP.Controllers
             return View(await db.Users.ToListAsync());
         }
 
-        // GET: Users/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = await db.Users.FindAsync(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
         // GET: Users/Create
         public ActionResult Create()
         {

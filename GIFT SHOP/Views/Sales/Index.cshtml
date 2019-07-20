@@ -5,14 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+<table class="table table-hover table-bordered">
+    <tr class="thead-light">
+            <th>
             @Html.DisplayNameFor(model => model.S_date)
         </th>
         <th>
@@ -39,38 +34,45 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_add)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_sum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_slip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.S_packagenumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delivery.Delivery_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User.U_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Stau.Staus_name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.S_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.S_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.S_ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_date)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_add)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_sum)
+            </td>
+            <td>
+                <center>
+                    <img src="~/img/slips/@Html.DisplayFor(modelItem => item.S_slip)"
+                         alt="img"
+                         style="height : 30px; width : auto;"
+                         asp-append-version="true" />
+                </center>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.S_packagenumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Delivery.Delivery_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.U_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stau.Staus_name)
+            </td>
+            <td>
+                @Html.ActionLink("รายละเอียด", "Edit", new { id = item.S_ID }) @*|*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.S_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.S_ID })*@
+            </td>
+        </tr>
+    }
 
 </table>

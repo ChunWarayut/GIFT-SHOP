@@ -21,21 +21,6 @@ namespace GIFT_SHOP.Controllers
             return View(await db.Categories.ToListAsync());
         }
 
-        // GET: AdminCategories/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = await db.Categories.FindAsync(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
-        }
-
         // GET: AdminCategories/Create
         public ActionResult Create()
         {

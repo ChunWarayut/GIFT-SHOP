@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using GIFT_SHOP.Models;
+using System.IO;
 
 namespace GIFT_SHOP.Controllers
 {
@@ -18,23 +19,8 @@ namespace GIFT_SHOP.Controllers
         // GET: AdminSales
         public async Task<ActionResult> Index()
         {
-            var sales = db.Sales.Include(s => s.Delivery).Include(s => s.User).Include(s => s.Stau);
+            var sales = db.Sales.OrderByDescending(x=>x.S_ID).Include(s => s.Delivery).Include(s => s.User).Include(s => s.Stau);
             return View(await sales.ToListAsync());
-        }
-
-        // GET: AdminSales/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Sale sale = await db.Sales.FindAsync(id);
-            if (sale == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sale);
         }
 
         // GET: AdminSales/Create
@@ -51,13 +37,22 @@ namespace GIFT_SHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "S_ID,S_date,U_ID,S_add,D_ID,S_sum,S_slip,Staus_ID,S_packagenumber")] Sale sale)
+        public async Task<ActionResult> Create([Bind(Include = "S_ID,S_date,U_ID,S_add,D_ID,S_sum,S_slip,Staus_ID,S_packagenumber")] Sale sale, HttpPostedFileBase S_slip)
         {
             if (ModelState.IsValid)
             {
-                db.Sales.Add(sale);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                if (S_slip.ContentLength > 0)
+                {
+
+                    string FileName = Path.GetFileName(S_slip.FileName);
+                    string FolderPath = Path.Combine(Server.MapPath("~/img/slips"), FileName);
+                    S_slip.SaveAs(FolderPath);
+                    sale.S_slip = FileName;
+
+                    db.Sales.Add(sale);
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
             }
 
             ViewBag.D_ID = new SelectList(db.Deliveries, "Delivery_ID", "Delivery_name", sale.D_ID);
@@ -93,7 +88,12 @@ namespace GIFT_SHOP.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sale).State = EntityState.Modified;
+                var update = db.Sales.Where(o => o.S_ID == sale.S_ID).FirstOrDefault();
+                if (update != null)
+                {
+                    update.Staus_ID = sale.Staus_ID;
+                    update.S_packagenumber = sale.S_packagenumber;
+                }
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

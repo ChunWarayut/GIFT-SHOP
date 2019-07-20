@@ -307,55 +307,45 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\AdminUsers\Create.cshtml" />
     <Content Include="Views\AdminUsers\Delete.cshtml" />
-    <Content Include="Views\AdminUsers\Details.cshtml" />
     <Content Include="Views\AdminUsers\Edit.cshtml" />
     <Content Include="Views\AdminUsers\Index.cshtml" />
     <Content Include="Views\AdminCategories\Create.cshtml" />
     <Content Include="Views\AdminCategories\Delete.cshtml" />
-    <Content Include="Views\AdminCategories\Details.cshtml" />
     <Content Include="Views\AdminCategories\Edit.cshtml" />
     <Content Include="Views\AdminCategories\Index.cshtml" />
     <Content Include="Views\AdminDeliveries\Create.cshtml" />
     <Content Include="Views\AdminDeliveries\Delete.cshtml" />
-    <Content Include="Views\AdminDeliveries\Details.cshtml" />
     <Content Include="Views\AdminDeliveries\Edit.cshtml" />
     <Content Include="Views\AdminDeliveries\Index.cshtml" />
     <Content Include="Views\AdminProducts\Create.cshtml" />
     <Content Include="Views\AdminProducts\Delete.cshtml" />
-    <Content Include="Views\AdminProducts\Details.cshtml" />
     <Content Include="Views\AdminProducts\Edit.cshtml" />
     <Content Include="Views\AdminProducts\Index.cshtml" />
     <Content Include="Views\AdminSales\Create.cshtml" />
     <Content Include="Views\AdminSales\Delete.cshtml" />
-    <Content Include="Views\AdminSales\Details.cshtml" />
     <Content Include="Views\AdminSales\Edit.cshtml" />
     <Content Include="Views\AdminSales\Index.cshtml" />
     <Content Include="Views\AdminSaleDetails\Create.cshtml" />
-    <Content Include="Views\AdminSaleDetails\Delete.cshtml" />
     <Content Include="Views\AdminSaleDetails\Details.cshtml" />
     <Content Include="Views\AdminSaleDetails\Edit.cshtml" />
     <Content Include="Views\AdminSaleDetails\Index.cshtml" />
     <Content Include="Views\AdminStaus\Create.cshtml" />
     <Content Include="Views\AdminStaus\Delete.cshtml" />
-    <Content Include="Views\AdminStaus\Details.cshtml" />
     <Content Include="Views\AdminStaus\Edit.cshtml" />
     <Content Include="Views\AdminStaus\Index.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Users\Delete.cshtml" />
-    <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\AdminLogin\Index.cshtml" />
     <Content Include="Views\Sales\Create.cshtml" />
     <Content Include="Views\Sales\Delete.cshtml" />
-    <Content Include="Views\Sales\Details.cshtml" />
     <Content Include="Views\Sales\Edit.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\SaleDetails\Create.cshtml" />
     <Content Include="Views\SaleDetails\Delete.cshtml" />
-    <Content Include="Views\SaleDetails\Details.cshtml" />
     <Content Include="Views\SaleDetails\Edit.cshtml" />
     <Content Include="Views\SaleDetails\Index.cshtml" />
   </ItemGroup>
@@ -377,6 +367,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="img\products\" />
+    <Folder Include="img\slips\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
