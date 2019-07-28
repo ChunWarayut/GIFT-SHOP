@@ -32,6 +32,5 @@ namespace GIFT_SHOP.Models
         public virtual DbSet<SaleDetail> SaleDetails { get; set; }
         public virtual DbSet<Stau> Staus { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Gallery> Galleries { get; set; }
     }
 }
