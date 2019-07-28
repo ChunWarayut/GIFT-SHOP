@@ -19,6 +19,14 @@
           <Property Name="Delivery_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Delivery_name" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Gallery_ID" />
+          </Key>
+          <Property Name="Gallery_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="P_ID" Type="int" Nullable="false" />
+          <Property Name="Gallery_Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="P_ID" />
@@ -80,6 +88,18 @@
           <Property Name="U_mail" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="U_add" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Gallery_ToTable">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Gallery" Type="Self.Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="Gallery">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Product_ToTable">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -167,11 +187,16 @@
         <EntityContainer Name="Database1ModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sale" EntityType="Self.Sale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleDetail" EntityType="Self.SaleDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staus" EntityType="Self.Staus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Gallery_ToTable" Association="Self.FK_Gallery_ToTable">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Gallery" EntitySet="Gallery" />
+          </AssociationSet>
           <AssociationSet Name="FK_Product_ToTable" Association="Self.FK_Product_ToTable">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
@@ -238,6 +263,7 @@
           <Property Name="P_amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_ToTable" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="SaleDetails" Relationship="Database1Model.FK_SaleDetail_ToTable_2" FromRole="Product" ToRole="SaleDetail" />
+          <NavigationProperty Name="Galleries" Relationship="Database1Model.FK_Gallery_ToTable" FromRole="Product" ToRole="Gallery" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -402,6 +428,11 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="SaleDetail" EntitySet="SaleDetails" />
           </AssociationSet>
+          <EntitySet Name="Galleries" EntityType="Database1Model.Gallery" />
+          <AssociationSet Name="FK_Gallery_ToTable" Association="Database1Model.FK_Gallery_ToTable">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Gallery" EntitySet="Galleries" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_SaleDetail_ToTable_2">
           <End Type="Database1Model.Product" Role="Product" Multiplicity="1" />
@@ -411,6 +442,27 @@
               <PropertyRef Name="P_ID" />
             </Principal>
             <Dependent Role="SaleDetail">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Gallery_ID" />
+          </Key>
+          <Property Name="Gallery_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="Gallery_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Database1Model.FK_Gallery_ToTable" FromRole="Gallery" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Gallery_ToTable">
+          <End Type="Database1Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Database1Model.Gallery" Role="Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="Gallery">
               <PropertyRef Name="P_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -500,6 +552,15 @@
                 <ScalarProperty Name="U_tel" ColumnName="U_tel" />
                 <ScalarProperty Name="U_mail" ColumnName="U_mail" />
                 <ScalarProperty Name="U_add" ColumnName="U_add" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galleries">
+            <EntityTypeMapping TypeName="Database1Model.Gallery">
+              <MappingFragment StoreEntitySet="Gallery">
+                <ScalarProperty Name="Gallery_Name" ColumnName="Gallery_Name" />
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="Gallery_ID" ColumnName="Gallery_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

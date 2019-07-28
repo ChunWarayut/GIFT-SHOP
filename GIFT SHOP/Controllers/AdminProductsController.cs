@@ -39,19 +39,10 @@ namespace GIFT_SHOP.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (P_img.ContentLength > 0)
-                {
+                db.Products.Add(product);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
 
-                    string FileName = Path.GetFileName(P_img.FileName);
-                    string FolderPath = Path.Combine(Server.MapPath("~/img/products"), FileName);
-                    P_img.SaveAs(FolderPath);
-                    product.P_img = FileName;
-
-                    db.Products.Add(product);
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
-
-                }
             }
 
             ViewBag.Ca_ID = new SelectList(db.Categories, "Ca_ID", "Ca_name", product.Ca_ID);
@@ -83,19 +74,10 @@ namespace GIFT_SHOP.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (P_img.ContentLength > 0)
-                {
+                db.Entry(product).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
 
-                    string FileName = Path.GetFileName(P_img.FileName);
-                    string FolderPath = Path.Combine(Server.MapPath("~/img/products"), FileName);
-                    P_img.SaveAs(FolderPath);
-                    product.P_img = FileName;
-
-                    db.Entry(product).State = EntityState.Modified;
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
-
-                }
             }
             ViewBag.Ca_ID = new SelectList(db.Categories, "Ca_ID", "Ca_name", product.Ca_ID);
             return View(product);

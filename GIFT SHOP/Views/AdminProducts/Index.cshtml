@@ -5,19 +5,39 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-    <h2>ระบบจัดการข้อมูลสินค้า</h2>
+<h2>ระบบจัดการข้อมูลสินค้า</h2> 
+    <div class="row">
+        <div class="col-6">
+            <p>
+                @Html.ActionLink("เพิ่มข้อมูล", "Create")
+            </p>
+        </div>
+        <div class="col-6 navbar-end">
+            <p>
+                @Html.ActionLink("ระบบจัดการรูปภาพ", "Index", "AdminGalleries")
+            </p>
+        </div> 
+</div>
 
-<p>
-    @Html.ActionLink("เพิ่มข้อมูล", "Create")
-</p>
+@*<div id="navbarMenuHeroA" class="navbar-menu">
+    <div class="navbar-end">
+        <a class="navbar-item is-active" href="/AdminDeliveries">
+            จัดการข้อมูลประเภทการส่งสินค้า
+        </a>
+        <a class="navbar-item is-active" href="/AdminStaus">
+            จัดการสถานะการชำระเงิน
+        </a>
+    </div>
+</div>*@
+
 <table class="table table-hover table-bordered">
     <tr class="thead-light">
         <th>
             <center>@Html.DisplayNameFor(model => model.P_name)</center>
         </th>
-        <th>
+        @*<th>
             <center>@Html.DisplayNameFor(model => model.P_img)</center>
-        </th>
+        </th>*@
         <th>
             <center>@Html.DisplayNameFor(model => model.P_price)</center>
         </th>
@@ -45,50 +65,52 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.P_name)
-        </td>
-        <td>
-            <center>
-                <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)"
-                     alt="img"
-                     style="height : 30px; width : auto;"
-                     asp-append-version="true" />
-            </center>
-        </td>
-        <td align="right">
-            @Html.DisplayFor(modelItem => item.P_price)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.P_colur)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.P_size)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.P_texture)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.P_length)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.P_chest_waistline)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.P_amount)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.Category.Ca_name)
-        </td>
-        <td>
-            <center>
-                @Html.ActionLink("แก้ไข", "Edit", new { id = item.P_ID }) |
-                @Html.ActionLink("ลบ", "Delete", new { id = item.P_ID })
-            </center>
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.P_name)
+            </td>
+            @*<td>
+                <center>
+                    <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)"
+                         alt="img"
+                         style="height : 30px; width : auto;"
+                         asp-append-version="true" />
+                </center>
+            </td>*@
+            <td align="right">
+                @Html.DisplayFor(modelItem => item.P_price)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.P_colur)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.P_size)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.P_texture)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.P_length)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.P_chest_waistline)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.P_amount)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.Category.Ca_name)
+            </td>
+            <td>
+                <center>
+                    @Html.ActionLink("แก้ไข", "Edit", new { id = item.P_ID }) |
+                    @Html.ActionLink("เพิ่มรูป", "Create", "AdminGalleries", new { id = item.P_ID, name = item.P_name }, null) |
+                    @Html.ActionLink("ลบ", "Delete", new { id = item.P_ID })
+                </center>
+            </td>
+        </tr>
+    }
 
 </table>

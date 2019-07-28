@@ -19,6 +19,8 @@
         <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable_1" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SaleDetail_ToTable_2" />
+        <EntityTypeShape EntityType="Database1Model.Gallery" Width="1.5" PointX="7.25" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="Database1Model.FK_Gallery_ToTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

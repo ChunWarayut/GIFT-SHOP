@@ -11,10 +11,10 @@ using GIFT_SHOP.Models;
 
 namespace GIFT_SHOP.Controllers
 {
-    public class AdminLoginController : Controller
+    public class LoginController : Controller
     {
         private Database1Entities db = new Database1Entities();
-        // GET: AdminLogin
+        // GET: Login
         public ActionResult Index()
         {
             return View();
@@ -36,13 +36,14 @@ namespace GIFT_SHOP.Controllers
                 Session["User_Name"] = userDetail.U_name;
                 Session["User_Lastname"] = userDetail.U_lastname;
                 Session["User_Tel"] = userDetail.U_tel;
-                return RedirectToAction("Index", "Admin");
+                return RedirectToAction("Index", "Home");
             }
         }
         public ActionResult Logout()
         {
+            Session.Clear();
             Session.Abandon();
-            return RedirectToAction("Index", "AdminLogin");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

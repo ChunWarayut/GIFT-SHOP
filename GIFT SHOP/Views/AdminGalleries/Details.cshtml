@@ -1,0 +1,35 @@
+﻿@model GIFT_SHOP.Models.Gallery
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Gallery</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gallery_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gallery_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.P_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.P_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Gallery_ID }) |
+    @Html.ActionLink("ย้อนกลับ", "Index")
+</p>

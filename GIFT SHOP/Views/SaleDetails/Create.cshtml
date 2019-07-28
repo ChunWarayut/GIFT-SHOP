@@ -1,16 +1,26 @@
-﻿@model GIFT_SHOP.Models.Product
+﻿
+
+
+@model GIFT_SHOP.Models.Product
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ระบบสั่งซื้อสินค้า</h2>
 
+<h2>ระบบสั่งซื้อสินค้า @Session["User_ID"] </h2>
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    else
+    {
+        @Html.AntiForgeryToken()
+    }
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.P_ID)
@@ -95,9 +105,9 @@
     </div>
 }
 
-    <div>
-        @Html.ActionLink("ดูรายการสั่งซื้อทั้งหมด", "Index")
-    </div>
+<div>
+    @Html.ActionLink("ดูรายการสั่งซื้อทั้งหมด", "Index")
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

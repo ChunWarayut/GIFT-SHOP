@@ -30,6 +30,26 @@
     }
 </script>
 
+
+
+<div class="row">
+    <div class="col-md-8">
+        <h3></h3>
+    </div>
+    <div class="col-md-4">
+        <br />
+        <form method="get" action="/Home/Index">
+            <div class="row">
+                <div class="col-lg-10">
+                    <input class="form-control" type="text" name="keyword" placeholder="Search" aria-label="Search">
+                </div>
+                <button type="submit" class="btn btn-light">ค้นหา</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
 <div class="col-12 center-block">
     <div class="row">
         @foreach (var item in Model)
@@ -55,19 +75,6 @@
                                 </div>
                             </div>
 
-                            <div class="content">
-                                @*สี @Html.DisplayFor(modelItem => item.P_colur)
-                                ไซต์ @Html.DisplayFor(modelItem => item.P_size)
-                                เนื้อผ้า @Html.DisplayFor(modelItem => item.P_texture)
-                                <br />
-                                ยาว @Html.DisplayFor(modelItem => item.P_length)
-                                รอบอก/รอบเอว @Html.DisplayFor(modelItem => item.P_chest_waistline)
-                                <br />
-                                จำนวนสินค้าคงเหลือ @Html.DisplayFor(modelItem => item.P_amount) ชิ้น
-                                <br />*@
-                                ราคา @Html.DisplayFor(modelItem => item.P_price) บาท
-                                <br />
-                            </div>
                         </div>
                     </div>
                 </a>

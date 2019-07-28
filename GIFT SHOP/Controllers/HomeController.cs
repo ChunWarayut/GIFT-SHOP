@@ -10,11 +10,17 @@ namespace GIFT_SHOP.Controllers
     public class HomeController : Controller
     {
         private Database1Entities db = new Database1Entities();
-        public ActionResult Index()
+        public ActionResult Index(string keyword)
         {
-            Session["User_ID"] = 1;
-            var products = db.Products.ToList();
-            return View(products);
+            //Session["User_ID"] = 1;
+            if (keyword == " " || keyword == null)
+            {
+                return View(db.Products.ToList());
+            }
+            else
+            {
+                return View(db.Products.Where(x => x.Category.Ca_name.Contains(keyword)).ToList());
+            }
         }
 
         public ActionResult About()
