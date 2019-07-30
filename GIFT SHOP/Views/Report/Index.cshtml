@@ -2,3 +2,28 @@
     ViewBag.Title = "Report Page";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+<h2>ระบบรายงานข้อมูล</h2>
+
+<table class="table table-hover table-bordered">
+    <tr class="thead-light">
+        <th>
+            @Html.DisplayName("#")
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("รายงานข้อมูลสินค้า", "Products", "Report")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("รายงานข้อมูลข้อมูลสมาชิก", "Users", "Report")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("รายงานข้อมูลข้อมูลการขาย", "Sales", "Report")
+        </td>
+    </tr>
+</table>

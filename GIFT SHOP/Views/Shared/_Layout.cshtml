@@ -28,18 +28,15 @@
                     </div>
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
-                            <abbr class="navbar-item is-active" >
-                                ยินดีต้อนรับ @Session["User_Name"] @Session["User_Lastname"]
-                            </abbr>
                             <a class="navbar-item is-active" href="/">
                                 หน้าแรก
                             </a>
-                            <a class="navbar-item">
+                            @*<a class="navbar-item">
                                 เสื้อ
                             </a>
                             <a class="navbar-item">
                                 กางเกง
-                            </a>
+                            </a>*@
                             <a class="navbar-item" href="/Sales">
                                 ติดตามสถานะสินค้า
                             </a>
@@ -47,15 +44,27 @@
                                 <!-- ตะกร้า -->
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
-                            <a class="navbar-item">
-                                ลงทะเบียน
-                            </a>
-                            <a class="navbar-item" href="/Login">
-                                เข้าสู่ระบบ
-                            </a>
-                            <a class="navbar-item" href="/Login/Logout">
-                                ออกจากระบบ
-                            </a>
+                            @{
+                                if (Session["User_Id"] == null)
+                                {
+
+                                    <a class="navbar-item">
+                                        ลงทะเบียน
+                                    </a>
+                                    <a class="navbar-item" href="/Login">
+                                        เข้าสู่ระบบ
+                                    </a>
+                                }
+                                else
+                                {
+                                    <abbr class="navbar-item is-active">
+                                        @*ยินดีต้อนรับ*@ @Session["User_Name"] @Session["User_Lastname"]
+                                    </abbr>
+                                    <a class="navbar-item" href="/Login/Logout">
+                                        ออกจากระบบ
+                                    </a>
+                                }
+                            }
                         </div>
                     </div>
                 </div>

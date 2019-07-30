@@ -80,7 +80,7 @@
     <td>
         <center>
             @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
-            <a class="" href="/AdminSaleDetails">
+            <a class="" href="/AdminSaleDetails?id=@item.S_ID&&uid=@item.U_ID">
                 <i class="fa fa-search" aria-hidden="true"></i>
             </a> |
             @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })

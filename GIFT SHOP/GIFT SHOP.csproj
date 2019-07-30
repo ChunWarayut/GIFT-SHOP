@@ -350,6 +350,10 @@
     <Content Include="Views\SaleDetails\Edit.cshtml" />
     <Content Include="Views\SaleDetails\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Report\products.cshtml" />
+    <Content Include="Views\Report\sales.cshtml" />
+    <Content Include="Views\Report\users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

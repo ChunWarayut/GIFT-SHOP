@@ -16,10 +16,10 @@ namespace GIFT_SHOP.Controllers
         private Database1Entities db = new Database1Entities();
 
         // GET: AdminSaleDetails
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? id, int? uid)
         {
             var saleDetails = db.SaleDetails.Include(s => s.Sale).Include(s => s.User);
-            return View(await saleDetails.ToListAsync());
+            return View(await saleDetails.Where(x => x.U_ID == uid && x.Sale_ID == id).ToListAsync());
         }
 
         // GET: AdminSaleDetails/Create
