@@ -27,6 +27,9 @@
           <Property Name="P_name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Ca_ID" Type="int" Nullable="false" />
           <Property Name="P_img" Type="nvarchar(max)" />
+          <Property Name="P_img_1" Type="nvarchar(max)" />
+          <Property Name="P_img_2" Type="nvarchar(max)" />
+          <Property Name="P_img_3" Type="nvarchar(max)" />
           <Property Name="P_price" Type="decimal" Precision="5" Scale="2" />
           <Property Name="P_colur" Type="nvarchar" MaxLength="10" />
           <Property Name="P_size" Type="nvarchar" MaxLength="10" />
@@ -238,6 +241,9 @@
           <Property Name="P_amount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_Product_ToTable" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="SaleDetails" Relationship="Database1Model.FK_SaleDetail_ToTable_2" FromRole="Product" ToRole="SaleDetail" />
+          <Property Name="P_img_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P_img_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="P_img_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -440,6 +446,9 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Database1Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="P_img_3" ColumnName="P_img_3" />
+                <ScalarProperty Name="P_img_2" ColumnName="P_img_2" />
+                <ScalarProperty Name="P_img_1" ColumnName="P_img_1" />
                 <ScalarProperty Name="P_ID" ColumnName="P_ID" />
                 <ScalarProperty Name="P_name" ColumnName="P_name" />
                 <ScalarProperty Name="Ca_ID" ColumnName="Ca_ID" />

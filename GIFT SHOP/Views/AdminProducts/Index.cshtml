@@ -12,11 +12,11 @@
                 @Html.ActionLink("เพิ่มข้อมูล", "Create")
             </p>
         </div>
-        <div class="col-6 navbar-end">
+        @*<div class="col-6 navbar-end">
             <p>
                 @Html.ActionLink("ระบบจัดการรูปภาพ", "Index", "AdminGalleries")
             </p>
-        </div> 
+        </div>*@ 
 </div>
 
 @*<div id="navbarMenuHeroA" class="navbar-menu">
@@ -106,7 +106,7 @@
             <td>
                 <center>
                     @Html.ActionLink("แก้ไข", "Edit", new { id = item.P_ID }) |
-                    @Html.ActionLink("เพิ่มรูป", "Create", "AdminGalleries", new { id = item.P_ID, name = item.P_name }, null) |
+                    @*@Html.ActionLink("เพิ่มรูป", "Create", "AdminGalleries", new { id = item.P_ID, name = item.P_name }, null) |*@
                     @Html.ActionLink("ลบ", "Delete", new { id = item.P_ID })
                 </center>
             </td>

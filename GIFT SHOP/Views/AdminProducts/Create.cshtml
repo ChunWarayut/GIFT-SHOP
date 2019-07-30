@@ -32,11 +32,35 @@
         </div>
     </div>
 
-    <div class="form-group d-none">
+    <div class="form-group">
         @Html.LabelFor(model => model.P_img, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="hidden" value="default-image.jpg" id="Price" name="P_img" />
+            @Html.TextBoxFor(model => model.P_img, "", new { type = "file" })
             @Html.ValidationMessageFor(model => model.P_img, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.P_img_1, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.P_img_1, "", new { type = "file" })
+            @Html.ValidationMessageFor(model => model.P_img_1, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.P_img_2, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.P_img_2, "", new { type = "file" })
+            @Html.ValidationMessageFor(model => model.P_img_2, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.P_img_3, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.P_img_3, "", new { type = "file" })
+            @Html.ValidationMessageFor(model => model.P_img_3, "", new { @class = "text-danger" })
         </div>
     </div>
 

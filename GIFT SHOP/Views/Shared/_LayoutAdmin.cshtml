@@ -10,12 +10,12 @@
     @Styles.Render("~/Content/css")
     <link href="~/Content/Site.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
-    @{
+    @*@{
         if (Session["User_Id"] == null)
         {
             Response.Redirect("~/AdminLogin/Index");
         }
-    }
+    }*@
 </head>
 <body>
     <section class=" is-Light is-fullheight">

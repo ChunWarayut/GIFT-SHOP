@@ -23,6 +23,12 @@ namespace GIFT_SHOP.Models
         public int Ca_ID { get; set; }
         [DisplayName("รูปสินค้า")]
         public string P_img { get; set; }
+        [DisplayName("รูปสินค้า")]
+        public string P_img_1 { get; set; }
+        [DisplayName("รูปสินค้า")]
+        public string P_img_2 { get; set; }
+        [DisplayName("รูปสินค้า")]
+        public string P_img_3 { get; set; }
         [DisplayName("ราคา")]
         public Nullable<decimal> P_price { get; set; }
         [DisplayName("สี")]
