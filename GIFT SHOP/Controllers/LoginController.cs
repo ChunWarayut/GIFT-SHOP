@@ -39,6 +39,38 @@ namespace GIFT_SHOP.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+
+        // GET: AdminUsers/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: AdminUsers/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create([Bind(Include = "U_ID,U_username,U_password,U_name,U_lastname,U_tel,U_mail,U_add")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(user);
+                await db.SaveChangesAsync();
+            }
+
+
+                Session["User_Email"] = user.U_mail;
+                Session["User_Id"] = user.U_ID;
+                Session["User_username"] = user.U_username;
+                Session["User_Name"] = user.U_name;
+                Session["User_Lastname"] = user.U_lastname;
+                Session["User_Tel"] = user.U_tel;
+                return RedirectToAction("Index", "Home");
+            //return View(user);
+        }
+
         public ActionResult Logout()
         {
             Session.Clear();

@@ -354,6 +354,7 @@
     <Content Include="Views\Report\products.cshtml" />
     <Content Include="Views\Report\sales.cshtml" />
     <Content Include="Views\Report\users.cshtml" />
+    <Content Include="Views\Login\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

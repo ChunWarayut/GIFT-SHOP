@@ -39,32 +39,18 @@ namespace GIFT_SHOP.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (P_img.ContentLength > 0 && P_img_1.ContentLength > 0 && P_img_2.ContentLength > 0 && P_img_3.ContentLength > 0)
-                {
-                    string FileName = Path.GetFileName(P_img.FileName);
-                    string FolderPath = Path.Combine(Server.MapPath("~/img/products"), FileName);
-                    P_img.SaveAs(FolderPath);
-                    product.P_img = FileName;
 
-                    string FileName1 = Path.GetFileName(P_img_1.FileName);
-                    string FolderPath1 = Path.Combine(Server.MapPath("~/img/products"), FileName1);
-                    P_img_1.SaveAs(FolderPath1);
-                    product.P_img_1 = FileName1;
+                    product.P_img = "default-image.jpg";
 
-                    string FileName2 = Path.GetFileName(P_img_1.FileName);
-                    string FolderPath2 = Path.Combine(Server.MapPath("~/img/products"), FileName2);
-                    P_img_2.SaveAs(FolderPath2);
-                    product.P_img_2 = FileName2;
+                    product.P_img_1 = "default-image.jpg";
 
-                    string FileName3 = Path.GetFileName(P_img_1.FileName);
-                    string FolderPath3 = Path.Combine(Server.MapPath("~/img/products"), FileName3);
-                    P_img_3.SaveAs(FolderPath3);
-                    product.P_img_3 = FileName3;
+                    product.P_img_2 = "default-image.jpg";
+
+                    product.P_img_3 = "default-image.jpg";
 
                     db.Products.Add(product);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
-                }
             }
 
             ViewBag.Ca_ID = new SelectList(db.Categories, "Ca_ID", "Ca_name", product.Ca_ID);
@@ -170,7 +156,10 @@ namespace GIFT_SHOP.Controllers
                     update.P_img = FileName;
                 }
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "AdminProducts", new
+                {
+                    id = product.P_ID
+                });
 
             }
             return View(product);
@@ -193,7 +182,10 @@ namespace GIFT_SHOP.Controllers
                     update.P_img_1 = FileName;
                 }
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "AdminProducts", new
+                {
+                    id = product.P_ID
+                });
 
             }
             return View(product);
@@ -217,7 +209,10 @@ namespace GIFT_SHOP.Controllers
                     update.P_img_2 = FileName;
                 }
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "AdminProducts", new
+                {
+                    id = product.P_ID
+                });
 
             }
             return View(product);
@@ -241,7 +236,10 @@ namespace GIFT_SHOP.Controllers
                     update.P_img_3 = FileName;
                 }
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit", "AdminProducts", new
+                {
+                    id = product.P_ID
+                });
 
             }
             return View(product);

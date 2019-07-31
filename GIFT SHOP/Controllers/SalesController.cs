@@ -43,32 +43,40 @@ namespace GIFT_SHOP.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (S_slip.ContentLength > 0)
+
+                var ini = S_slip;
+
+                //if (S_slip != null)
+                if (S_slip != null)
                 {
                     string FileName = Path.GetFileName(S_slip.FileName);
                     string FolderPath = Path.Combine(Server.MapPath("~/img/slips"), FileName);
                     S_slip.SaveAs(FolderPath);
                     sale.S_slip = FileName;
-                    if (sale.D_ID == 1)
-                    {
-                        sale.S_sum = sale.S_sum + 30;
-                    }
-                    if (sale.D_ID == 2)
-                    {
-                        sale.S_sum = sale.S_sum + 50;
-                    }
-                    db.Sales.Add(sale);
-                    await db.SaveChangesAsync();
-                    var uid = Convert.ToInt32(Session["User_ID"]);
-                    var update = await db.SaleDetails.Where(x => x.U_ID == uid && x.Sale_ID == 1).ToListAsync();
-                    var ProID = db.Sales.OrderByDescending(x => x.S_ID).Select(x => x.S_ID).FirstOrDefault();
-                    if (update.Count() > 0)
-                    {
-                        update.ForEach(x => { x.Sale_ID = ProID; });
-                        db.SaveChanges();
-                    }
-                    return RedirectToAction("Index");
                 }
+                else
+                {
+                    sale.S_slip = "default-image.jpg";
+                }
+                if (sale.D_ID == 1)
+                {
+                    sale.S_sum = sale.S_sum + 30;
+                }
+                if (sale.D_ID == 2)
+                {
+                    sale.S_sum = sale.S_sum + 50;
+                }
+                db.Sales.Add(sale);
+                await db.SaveChangesAsync();
+                var uid = Convert.ToInt32(Session["User_ID"]);
+                var update = await db.SaleDetails.Where(x => x.U_ID == uid && x.Sale_ID == 1).ToListAsync();
+                var ProID = db.Sales.OrderByDescending(x => x.S_ID).Select(x => x.S_ID).FirstOrDefault();
+                if (update.Count() > 0)
+                {
+                    update.ForEach(x => { x.Sale_ID = ProID; });
+                    db.SaveChanges();
+                }
+                return RedirectToAction("Index");
             }
 
             ViewBag.D_ID = new SelectList(db.Deliveries, "Delivery_ID", "Delivery_name", sale.D_ID);
