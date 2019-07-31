@@ -25,7 +25,7 @@ namespace GIFT_SHOP.Controllers
             var userDetail = db.Users.Where(x => x.U_username == userModel.U_username && x.U_password == userModel.U_password).FirstOrDefault();
             if (userDetail == null)
             {
-                userModel.LoginErrorMessage = "Email หรือ Password";
+                userModel.LoginErrorMessage = "Username หรือ Password ไม่ถูกต้อง";
                 return View("Index", userModel);
             }
             else

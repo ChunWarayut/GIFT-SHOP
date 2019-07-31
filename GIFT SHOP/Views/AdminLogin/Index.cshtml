@@ -34,7 +34,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        @Html.EditorFor(model => model.U_password, new { htmlAttributes = new { @class = "form-box-input", placeholder = Html.DisplayNameFor(x => x.U_password) } })
+                        @Html.EditorFor(model => model.U_password, new { htmlAttributes = new { @class = "form-box-input", placeholder = "Password", @type = "password" } })
                         @Html.ValidationMessageFor(model => model.U_password, "", new { @class = "text-danger" })
                     </div>
                 </div>
