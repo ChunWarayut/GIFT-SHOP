@@ -23,10 +23,20 @@ namespace GIFT_SHOP.Controllers
             return View(products.ToList());
         }
         // GET: Report
-        public ActionResult Sales()
+        public ActionResult Sales(DateTime? gte, DateTime? lte)
         {
-            var sales = db.Sales.ToList();
-            return View(sales);
+            try
+            {
+                ViewBag.gte = gte;
+                ViewBag.lte = lte;
+                var sales = db.Sales.Where(x => x.S_date >= gte && x.S_date <= lte).ToList();
+                return View(sales);
+            }
+            catch
+            {
+                var sales = db.Sales.ToList();
+                return View(sales);
+            }
         }
         // GET: Report
         public ActionResult Users()

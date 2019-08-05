@@ -29,11 +29,45 @@
     }
 
 </script>
+<form method="get" action="/Report/Sales">
+    <div class="navbar-end">
+        <label class="control-label col-md-1">
+            ตั้งแต่วันที่: &nbsp;
+        </label>
+        <input class="form-control" type="date" name="gte" id="gte">
+
+        <label class="control-label col-md-1">
+            ภึงวันที่: &nbsp; &nbsp; &nbsp;
+        </label>
+        <input class="form-control" type="date" name="lte" id="lte">
+        <p> &nbsp; &nbsp; &nbsp;</p>
+        <button type="submit" class="btn btn-light">ค้นหา</button>
+    </div>
+</form>
+<hr />
 <DIV id="report">
     <center> Kib SHOP </center>
     <center> รายงานข้อมูลการขาย </center>
-    <p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+    <hr />
+    @*<p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        <p> <b>วันที่เริ่ม </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        <p> <b>วันที่สิ้นสุด </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>*@
+    <div class="row">
+        <div class="col-3">
+            <p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        </div>
 
+        <div class="col-9">
+            <div style="align-items: stretch; display: flex;     justify-content: flex-end;">
+                <b>ตั้งแต่วันที่:  &nbsp; @ViewBag.gte </b>
+                <p> &nbsp; &nbsp; &nbsp;</p>
+                <b>ถึงวันที่:  &nbsp; @ViewBag.lte</b>
+                <p> &nbsp; &nbsp; &nbsp;</p>
+            </div>
+        </div>
+
+    </div>
+    <hr/>
     <table class="table table-hover table-bordered">
         <tr class="thead-light">
             <th>
@@ -59,7 +93,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Stau.Staus_name)
-            </th> 
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -93,7 +127,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Stau.Staus_name)
-                </td> 
+                </td>
             </tr>
         }
 
