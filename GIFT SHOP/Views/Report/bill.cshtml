@@ -1,0 +1,88 @@
+﻿@model IEnumerable<GIFT_SHOP.Models.SaleDetail>
+@{
+    ViewBag.Title = "sales";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script type="text/javascript">
+    function printSelection(node) {
+        var content = node.innerHTML
+        var pwin = window.open('');
+        pwin.document.open();
+        pwin.document.write('<html><head>');
+        pwin.document.write('<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">');
+        pwin.document.write('<style>');
+        pwin.document.write('* { ');
+        pwin.document.write('font-family: "Kanit", sans-serif !important;');
+        pwin.document.write('}');
+        pwin.document.write('</style>');
+        pwin.document.write('<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">');
+        pwin.document.write('<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">');
+        pwin.document.write('<body onload="window.print()">' + content + '</body></head></html>');
+        pwin.document.close();
+        if (document.getElementById("print").style.display == "inline") {
+            document.getElementById("print").style.display = "none";
+        }
+        setTimeout(function () {
+            pwin.close();
+        }, 10000);
+    }
+
+</script>
+<hr />
+<DIV id="report">
+    <center> Kib SHOP </center>
+    <center> ใบเสร็จ </center>
+    <hr />
+    @*<p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        <p> <b>วันที่เริ่ม </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        <p> <b>วันที่สิ้นสุด </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>*@
+    @*<div class="row">
+            <div class="col-3">
+            </div>
+        </div>*@
+    <p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy") </p>
+    <hr />
+    <p>
+        ชื่อ @ViewBag.FName นามสกุล @ViewBag.LName
+    </p>
+    <p>
+        สินค้าที่สั่ง
+    </p>
+    <div style="padding-left: 25px; padding-bottom: 20px">
+
+        @foreach (var item in Model)
+        {
+            <abbr>
+
+                @Html.DisplayNameFor(model => model.Product.P_name)
+                @Html.DisplayFor(modelItem => item.Product.P_name)
+            </abbr>
+            <abbr style="padding-left: 45px">
+
+                @Html.DisplayNameFor(model => model.Sd_number)
+                @Html.DisplayFor(modelItem => item.Sd_number)
+            </abbr>
+            <abbr style="padding-left: 45px">
+
+                @Html.DisplayNameFor(model => model.Pro_Price)
+                @Html.DisplayFor(modelItem => item.Pro_Price)
+            </abbr>
+        }
+
+    </div>
+
+    <p>
+
+        รวมเป็นเงิน @ViewBag.Prosum บาท
+    </p>
+    <hr />
+    <p>
+        สามารถชำระเงินได้ที่ธนาคารทุกสาขา
+    </p>
+    <img src="~/img/bank/bank.jpg" width="500px"/>
+</DIV>
+<center>
+    <input name="button6" type="button" value=" - =  = - " id="print" class="btn-block btn-primary"
+           onClick="printSelection(document.getElementById('report'))" />
+</center>

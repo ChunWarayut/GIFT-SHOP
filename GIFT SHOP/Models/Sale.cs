@@ -25,6 +25,7 @@ namespace GIFT_SHOP.Models
         [DisplayName("เลขที่ใบสั่งซื้อ")]
         public int S_ID { get; set; }
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [DisplayName("วันที่สั่งซื้อ")]
         public System.DateTime S_date { get; set; }
         [DisplayName("ชื่อลูกค้า")]

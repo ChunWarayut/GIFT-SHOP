@@ -17,10 +17,18 @@ namespace GIFT_SHOP.Controllers
         private Database1Entities db = new Database1Entities();
 
         // GET: AdminProducts
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string keyword)
         {
-            var products = db.Products.Include(p => p.Category);
-            return View(await products.ToListAsync());
+
+            if (keyword == " " || keyword == null)
+            {
+                var products = db.Products.Include(p => p.Category);
+                return View(await products.ToListAsync());
+            }
+            else
+            {
+                return View(db.Products.Where(x => x.P_name.Contains(keyword)).ToList());
+            }
         }
 
         // GET: AdminProducts/Create

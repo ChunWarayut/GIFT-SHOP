@@ -5,30 +5,52 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>ระบบจัดการข้อมูลสินค้า</h2> 
-    <div class="row">
-        <div class="col-6">
-            <p>
-                @Html.ActionLink("เพิ่มข้อมูล", "Create")
-            </p>
-        </div>
-        @*<div class="col-6 navbar-end">
+<h2>ระบบจัดการข้อมูลสินค้า</h2>
+<div class="row">
+    <div class="col-6">
+        <p>
+            @Html.ActionLink("เพิ่มข้อมูล", "Create")
+        </p>
+    </div>
+    @*<div class="col-6 navbar-end">
             <p>
                 @Html.ActionLink("ระบบจัดการรูปภาพ", "Index", "AdminGalleries")
             </p>
-        </div>*@ 
+        </div>*@
 </div>
 
 @*<div id="navbarMenuHeroA" class="navbar-menu">
-    <div class="navbar-end">
-        <a class="navbar-item is-active" href="/AdminDeliveries">
-            จัดการข้อมูลประเภทการส่งสินค้า
-        </a>
-        <a class="navbar-item is-active" href="/AdminStaus">
-            จัดการสถานะการชำระเงิน
-        </a>
+        <div class="navbar-end">
+            <a class="navbar-item is-active" href="/AdminDeliveries">
+                จัดการข้อมูลประเภทการส่งสินค้า
+            </a>
+            <a class="navbar-item is-active" href="/AdminStaus">
+                จัดการสถานะการชำระเงิน
+            </a>
+        </div>
+    </div>*@
+
+
+
+
+
+<div class="row" style="padding-bottom: 25px">
+    <div class="col-md-8">
+        <h3></h3>
     </div>
-</div>*@
+    <div class="col-md-4">
+        <br />
+        <form method="get" action="/AdminProducts/Index">
+            <div class="row">
+                <div class="col-lg-10">
+                    <input class="form-control" type="text" name="keyword" placeholder="Search" aria-label="Search">
+                </div>
+                <button type="submit" class="btn btn-light">ค้นหา</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 
 <table class="table table-hover table-bordered">
     <tr class="thead-light">
@@ -36,8 +58,8 @@
             <center>@Html.DisplayNameFor(model => model.P_name)</center>
         </th>
         @*<th>
-            <center>@Html.DisplayNameFor(model => model.P_img)</center>
-        </th>*@
+                <center>@Html.DisplayNameFor(model => model.P_img)</center>
+            </th>*@
         <th>
             <center>@Html.DisplayNameFor(model => model.P_price)</center>
         </th>
@@ -72,13 +94,13 @@
                 @Html.DisplayFor(modelItem => item.P_name)
             </td>
             @*<td>
-                <center>
-                    <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)"
-                         alt="img"
-                         style="height : 30px; width : auto;"
-                         asp-append-version="true" />
-                </center>
-            </td>*@
+                    <center>
+                        <img src="~/img/products/@Html.DisplayFor(modelItem => item.P_img)"
+                             alt="img"
+                             style="height : 30px; width : auto;"
+                             asp-append-version="true" />
+                    </center>
+                </td>*@
             <td align="right">
                 @Html.DisplayFor(modelItem => item.P_price)
             </td>

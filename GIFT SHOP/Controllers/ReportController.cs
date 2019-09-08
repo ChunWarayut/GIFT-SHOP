@@ -1,7 +1,9 @@
 ﻿using GIFT_SHOP.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -37,6 +39,16 @@ namespace GIFT_SHOP.Controllers
                 var sales = db.Sales.ToList();
                 return View(sales);
             }
+        }
+        // GET: AdminSaleDetails
+        public async Task<ActionResult> Bill(int? id, int? uid)
+        {
+            ViewBag.Prosum = db.SaleDetails.Where(x => x.Sale_ID == id && x.U_ID == uid).Select(x => x.Pro_Price).Sum();
+            ViewBag.FName = db.SaleDetails.Where(x => x.Sale_ID == id && x.U_ID == uid).Select(x => x.User.U_name).FirstOrDefault();
+            ViewBag.LName = db.SaleDetails.Where(x => x.Sale_ID == id && x.U_ID == uid).Select(x => x.User.U_lastname).FirstOrDefault();
+            var saleDetails = db.SaleDetails.Include(s => s.Sale).Include(s => s.User);
+            var iiiiii = await saleDetails.Where(x => x.U_ID == uid && x.Sale_ID == id).ToListAsync();
+            return View(await saleDetails.Where(x => x.U_ID == uid && x.Sale_ID == id).ToListAsync());
         }
         // GET: Report
         public ActionResult Users()

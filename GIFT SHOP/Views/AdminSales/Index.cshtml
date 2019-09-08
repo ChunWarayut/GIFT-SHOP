@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<table class="table table-hover table-bordered">
+<table class="table table-hover table-bordered text-nowrap">
     <tr class="thead-light">
         <th>
             @Html.DisplayNameFor(model => model.S_date)
@@ -81,9 +81,9 @@
         <center>
             @Html.ActionLink("แก้ไข", "Edit", new { id = item.S_ID }) |
             <a class="" href="/AdminSaleDetails?id=@item.S_ID&&uid=@item.U_ID">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a> |
-            @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })
+                <i class="fa fa-eye" aria-hidden="true"></i>
+            </a> @*|
+            @Html.ActionLink("ลบ", "Delete", new { id = item.S_ID })*@
         </center>
     </td>
 </tr>
